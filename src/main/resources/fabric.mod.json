@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "realtimemc",
+  "version": "1.0.1",
+  "name": "realtimemc",
+  "description": "Full real-world time, moon, and weather sync.",
+  "authors": [
+    "Midna"
+  ],
+  "contact": {
+    "sources": "https://github.com/lrrsh/rtw",
+    "issues": "https://github.com/lrrsh/rtw/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/realtimemc/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.midna.realtimeworld.client.RealTimeWorldDataGenerator"
+    ],
+    "client": [
+      "com.midna.realtimeworld.client.RealTimeWorldClient"
+    ],
+    "main": [
+      "com.midna.realtimeworld.RealTimeWorld"
+    ],
+    "modmenu": [
+      "com.midna.realtimeworld.client.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "realtimemc.mixins.json",
+    {
+      "config": "realtimemc.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
