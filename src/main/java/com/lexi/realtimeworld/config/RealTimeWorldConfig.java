@@ -11,12 +11,17 @@ import java.nio.file.Path;
 public class RealTimeWorldConfig {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path CONFIG_PATH =
-            FabricLoader.getInstance().getConfigDir().resolve("realtimeworld.json");
+    private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("realtimeworld.json");
 
     public boolean syncWeather = true;
     public boolean lockTime = true;
     public boolean syncLight = true;
+    public boolean logToMCChat = false;
+
+    public boolean useRealWeather = false;
+    public double weatherLatitude = 40.7128;
+    public double weatherLongitude = -74.0060;
+    public int realWeatherRefreshSeconds = 600;
 
     public double daytimeRainChance = 0.1;
     public double daytimeThunderChance = 0.05;
@@ -24,7 +29,8 @@ public class RealTimeWorldConfig {
     private static RealTimeWorldConfig INSTANCE;
 
     public static RealTimeWorldConfig get() {
-        if (INSTANCE == null) load();
+        if (INSTANCE == null)
+            load();
         return INSTANCE;
     }
 
